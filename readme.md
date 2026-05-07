@@ -155,8 +155,8 @@ eval $(minikube docker-env)
 docker build -t llmops-app:v1.0.0 .
 
 kubectl create secret generic llmops-secrets \
-  --from-literal=GROQ_API_KEY="" \
-  --from-literal=HUGGINGFACEHUB_API_TOKEN=""
+  --from-literal=GROQ_API_KEY="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" \
+  --from-literal=HUGGINGFACEHUB_API_TOKEN="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"
 
 kubectl apply -f llmops-k8s.yaml
 
