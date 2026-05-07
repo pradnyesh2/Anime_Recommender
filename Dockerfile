@@ -1,0 +1,29 @@
+## Parent image (Base image)
+From python:3.12.10-slim
+
+## Essential environment variables
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+## Work directory inside the docker container
+WORKDIR /app
+
+## Installing system dependencies
+RUN apt-get update && ap-get install -y \
+    build-essential \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+## Copying your all contents from local to app
+COPY . .
+
+## Run setup.py
+RUN pip install --no-cache-dir -e .
+
+## Use ports
+EXPOSE 8501
+
+## Run the app
+CMD [ "stremlit", "run", "app/app.py", "--server.port=8501", "--server.address=0.0.0.0", "--server.headless=true"]
+
+
