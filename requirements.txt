@@ -6,5 +6,5 @@ langchain_huggingface
 langchain_chroma
 streamlit
 pandas
-# python-dotenv
-# sentence-transformer
+python-dotenv
+sentence-transformers
