@@ -16,13 +16,13 @@ spec:
     spec:
       containers:
       - name: llmops-container
-        image: llmops-app:v1.0.0    # use local image
-        imagePullPolicy: IfNotPresent    #Always, Never
+        image: llmops-app:latest  # Use local image
+        imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 8501
-        envForm:
+        envFrom:
           - secretRef:
-              name: llmops-secrets
+              name: llmops-secrets 
 
 ---
 apiVersion: v1
@@ -30,15 +30,10 @@ kind: Service
 metadata:
   name: llmops-service
 spec:
-  type: LoadBalancer    #ClusterIp, NodePort
+  type: LoadBalancer
   selector:
     app: llmops
   ports:
     - protocol: TCP
       port: 80
       targetPort: 8501
-  
-
-
-
-
