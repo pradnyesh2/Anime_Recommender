@@ -9,20 +9,20 @@ spec:
   selector:
     matchLabels:
       app: llmops
-template:
-  metadata:
-    labels:
-      app: llmops
-  spec:
-    containers:
-    - name: llmops-container
-      image: llmops-app:v1.0.0    # use local image
-      imagePullPolicy: IfNotPresent    #Always, Never
-      ports:
-        - containerPort: 8501
-      envForm:
-        - secretRef:
-            name: llmops-secrets
+  template:
+    metadata:
+      labels:
+        app: llmops
+    spec:
+      containers:
+      - name: llmops-container
+        image: llmops-app:v1.0.0    # use local image
+        imagePullPolicy: IfNotPresent    #Always, Never
+        ports:
+          - containerPort: 8501
+        envForm:
+          - secretRef:
+              name: llmops-secrets
 
 ---
 apiVersion: v1
